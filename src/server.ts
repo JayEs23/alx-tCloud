@@ -35,6 +35,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Displays a simple message to the user
   app.get( "/", async ( req, res ) => {
     try {
+      
       let myURL = req.query.url;
       var pattern = new RegExp('^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.?)+[a-z]{2,}|(\?[;&amp;a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$','i');
       var new_res = pattern.test(myURL);
