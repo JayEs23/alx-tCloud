@@ -34,15 +34,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   // Root Endpoint
   // Displays a simple message to the user
   app.get( "/", async ( req, res ) => {
-    try {
-      let myURL = req.query.url;
-      var pattern = new RegExp('^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.?)+[a-z]{2,}|(\?[;&amp;a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$','i');
-      var new_res = pattern.test(myURL);
-      res.send(`try GET /filteredimage?image_url={{}} ${new_res}`)
-    } catch (error) {
-      res.send(error);
-    }
-    
+    res.send('Welcome!');
   } );
 
   app.get('/filteredimage/',function (req, res) {
