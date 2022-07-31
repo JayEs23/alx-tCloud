@@ -38,9 +38,18 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   } );
 
   app.get('/filteredimage/',function (req, res) {
-    let url = req.query.image_url;
-    const result = filterImageFromURL(url);
-    res.send(result);
+
+    let url: string = req.query.image_url;
+    var regExp: RegExp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    console.log(regExp.test(url)); // true
+    if (regExp.test(url)) {
+      const result:any = filterImageFromURL(url); 
+      res.send(result);
+    }
+    res.send("Url is not valid!");
+    
+    //console.log(url);
+   
     
   })
   
