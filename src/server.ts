@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { Router, Request, Response, json } from 'express';
+
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
@@ -33,23 +34,23 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   
   // Root Endpoint
   // Displays a simple message to the user
-  app.get( "/", async ( req, res ) => {
-    try {
-      
-      let myURL = req.query.url;
-      var pattern = new RegExp('^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.?)+[a-z]{2,}|(\?[;&amp;a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$','i');
-      var new_res = pattern.test(myURL);
-      res.send(`try GET /filteredimage?image_url={{}} ${new_res}`)
-    } catch (error) {
-      res.send(error);
-    }
-    
+  app.get( "/", async (req:Request, res:Response) => {
+    res.status(200)
+      .send('Welcome!');
   } );
 
-  app.get('/filteredimage/',function (req, res) {
-    let url = req.query.image_url;
-    const result = filterImageFromURL(url);
-    res.send(result);
+  app.get('/filteredimage/',function (req:Request, res:Response) {
+
+    let url: string = req.query.image_url;
+    var regExp: RegExp = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    console.log(regExp.test(url)); // true
+    if (regExp.test(url)) {
+      const result:any = filterImageFromURL(url); 
+      res.status(200)
+        .send(url);
+    }
+    res.status(400)
+      .send("Url is not valid!");   
     
   })
   
