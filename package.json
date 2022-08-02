@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
   "name": "udacity-c2-image-filter",
   "version": "1.0.0",
   "description": "",
@@ -35,9 +33,7 @@
     "lodash": "^4.17.15",
     "rimraf": "^3.0.2"
   }
-=======
-=======
->>>>>>> refs/remotes/origin/main
+
     "name": "udacity-c2-image-filter",
     "version": "1.0.0",
     "description": "",
@@ -73,8 +69,5 @@
         "rimraf": "^3.0.2",
         "valid-url": "^1.0.9"
     }
-<<<<<<< HEAD
->>>>>>> b258194ea6b7de165acfaf4093e1d2445f09d327
-=======
->>>>>>> refs/remotes/origin/main
+
 }
