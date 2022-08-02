@@ -47,11 +47,10 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     if (regExp.test(url)) {
       const result:any = filterImageFromURL(url); 
       res.status(200)
-        .send(url);
+        .sendFile(url);
     }
     res.status(400)
       .send("Url is not valid!");   
-    
   })
   
 
